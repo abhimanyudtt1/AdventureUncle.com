@@ -1,0 +1,689 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Creative Morphing Menu Demo</title>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style class="cp-pen-styles">
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  /*font-family: 'Coming Soon', cursive;*/
+  transition: background 1s ease;
+  /*background: #3498db;*/
+}
+
+.w3-animate-fading{animation:fading 10s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+.w3-content{max-width:980px;margin:auto}.w3-rest{overflow:hidden}
+.w3-tooltip,.w3-display-container{position:relative}.w3-tooltip .w3-text{display:none}.w3-tooltip:hover .w3-text{display:inline-block}
+.w3-display-container:hover .w3-display-hover{display:block}.w3-display-container:hover span.w3-display-hover{display:inline-block}.w3-display-hover{display:none}
+.w3-button{border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.w3-black,.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
+.w3-display-right{position:absolute;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
+.w3-display-left{position:absolute;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+.w3-animate-right{position:relative;animation:animateright 0.4s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/*html {
+  width: 100%;
+  height: 100%;
+} */
+
+/* body {
+  background: #161616;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+} */
+
+.heading > h1 {
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.open {
+  position: fixed;
+  z-index: 10;
+  top: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.open:hover { opacity: 0.8; }
+
+.open span {
+  display: block;
+  float: left;
+  clear: both;
+  height: 4px;
+  width: 40px;
+  border-radius: 40px;
+  background-color: #000;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.open span:nth-child(1) {
+  margin-top: 10px;
+  z-index: 9;
+}
+
+.open span:nth-child(2) { margin-top: 25px; }
+
+.open span:nth-child(3) { margin-top: 40px; }
+
+.sub-menu {
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  height: 0;
+  width: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+  background-color: rgba(64, 64, 64, 0.7);
+  border-radius: 50%;
+  z-index: 18;
+  overflow: hidden;
+}
+
+.sub-menu li {
+  display: block;
+  float: right;
+  clear: both;
+  height: auto;
+  margin-right: -160px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.sub-menu li:first-child { margin-top: 180px; }
+
+.sub-menu li:nth-child(1) { -webkit-transition-delay: 0.05s; }
+
+.sub-menu li:nth-child(2) { -webkit-transition-delay: 0.10s; }
+
+.sub-menu li:nth-child(3) { -webkit-transition-delay: 0.15s; }
+
+.sub-menu li:nth-child(4) { -webkit-transition-delay: 0.20s; }
+
+.sub-menu li:nth-child(5) { -webkit-transition-delay: 0.25s; }
+
+.sub-menu li a {
+  color: #fff;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  float: left;
+  line-height: 40px;
+}
+
+.oppenned .sub-menu {
+  opacity: 1;
+  height: 400px;
+  width: 400px;
+}
+
+.oppenned span:nth-child(2) { overflow: visible; }
+
+.oppenned span:nth-child(1),
+.oppenned span:nth-child(3) {
+  z-index: 100;
+  transform: rotate(45deg);
+}
+
+.oppenned span:nth-child(1) { transform: rotate(45deg) translateY(12px) translateX(12px); }
+
+.oppenned span:nth-child(2) {
+  height: 400px;
+  width: 400px;
+  right: -160px;
+  top: -160px;
+  border-radius: 50%;
+  background-color: rgba(64, 64, 64, 0.7);
+}
+
+.oppenned span:nth-child(3) { transform: rotate(-45deg) translateY(-10px) translateX(10px); }
+
+.oppenned li { margin-right: 168px; }
+
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 90%;
+}
+
+.column {
+    /*background-color: blue;*/
+    float: left;
+    margin-left: 5%;
+}
+.column:first-child {
+    margin-left: 0;
+}
+.column.full { width: 100%; }
+.column.two-thirds { width: 66%; }
+.column.half { width: 50%%; }
+.column.one-third { width: 33%; }
+.column.one-fourth { width: 25%; }
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+.row {
+    /*background-color: yellow;*/
+    overflow: hidden;
+}
+
+@media screen and (max-width: 640px) {
+    .column.full,
+    .column.two-thirds,
+    .column.half,
+    .column.one-third,
+    .column.one-fourth {
+        float: none;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+#heading {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+.mytextHeading {
+  padding: 10px;
+  font-size: 25px;
+  font
+}
+.mytextHeading2 {
+  padding: 10px;
+  font-size: 17px;
+}
+.mytext {
+  padding-left: 2%;
+}
+
+
+.button1 {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+</style>
+
+
+
+<link rel="stylesheet" href="static/genericProductPage/css/style.css">
+
+
+
+</head>
+
+<body style="background: #f5f5f5;">
+
+<!--<div class="w3-content w3-display-container slide" data-background="#e74c3c" >
+  <img class="mySlides w3-animate-right" src="https://unsplash.it/2000/1250?image=397" style="width:100%">
+  <img class="mySlides w3-animate-right" src="https://unsplash.it/2000/1250?image=689" style="width:100%">
+  <img class="mySlides w3-animate-right" src="https://unsplash.it/2000/1250?image=675" style="width:100%">
+  <img class="mySlides w3-animate-right" src="https://unsplash.it/2000/1250?image=658" style="width:100%">
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div> -->
+
+
+<div class="open"> <span class="cls"></span> <span>
+  <ul class="sub-menu ">
+    <li> <a href="#">Home</a> </li>
+    <li> <a href="#">Contact</a> </li>
+    <li> <a href="#">About</a> </li>
+    <li> <a href="#">Blog</a> </li>
+  </ul>
+  </span> <span class="cls"></span> </div> 
+
+
+
+<div class = "heading" style="background-color: black;color: white;font-family: sans-serif;
+    font-variant: common-ligatures;opacity: .8;"><h1 id="heading"  data-background="#27ae60">Advendure Uncle</h1></div>
+</div>
+<div class="slider" style="padding: 100px; ">
+    <div class="slider__slides">
+  <!-- slides -->
+  {% set images = result['image'] %}
+    {% if images|length == 0 %}
+
+        <div class="slide s--active">
+            <div class="slide__inner">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+        <div class="slide s--prev">
+            <div class="slide__inner">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if images|length == 1 %}
+        <div class="slide s--active">
+            <div class="slide__inner">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+        <div class="slide s--prev">
+            <div class="slide__inner" style="background-image: url({{ result[url] }}{{ result['image']['image_count_1'] }})">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if images|length == 2 %}
+        <div class="slide s--active">
+            <div class="slide__inner" style="background-image: url({{ result[url] }}{{ result['image']['image_count_1'] }})">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+        <div class="slide s--prev">
+            <div class="slide__inner" style="background-image: url({{ result[url] }}{{ result['image']['image_count_2'] }})">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if images|length > 2 %}
+        <div class="slide s--active">
+            <div class="slide__inner" style="background-image: url({{ result[url] }}{{ result['image']['image_count_1'] }})">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+        {% for i in range(2,images|length -1) %}
+            <div class="slide">
+              <div class="slide__inner" style="background-image: url({{ result[url] }}{{ result['image']['image_count_%s' % i] }})">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="slide s--prev">
+            <div class="slide__inner" style="background-image: url({{ result[url] }}{{ result['image']['image_count_2'] }})">
+                <div class="slide__content">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+  </div>
+  <!-- slides end -->
+  <div class="slider__control">
+    <div class="slider__control-line"></div>
+    <div class="slider__control-line"></div>
+  </div>
+  <div class="slider__control slider__control--right m--right">
+    <div class="slider__control-line"></div>
+    <div class="slider__control-line"></div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-8 col-lg-8">
+      <h1 style="text-align: left;">
+        {{result['name']| replace("_"," ")}}
+      </h1>
+    </div>
+    <div class="col-md-4 col-sm-4 col-lg-4">
+      <p style="text-align: right;opacity: .65;">
+        {{ "%s Days and %s Nights" % (result['duration']|int,result['duration']|int -1) }}
+      </p>
+    </div>
+  </div>
+</div>
+
+  <div class="container" style="width: 85%">
+      <p>
+        {{ result['ShortDef'] }}
+      </p>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytextHeading">
+        Event Details
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytext">
+        Duration : {{ "%s Days and %s Nights" % (result['duration']|int,result['duration']|int -1) }}
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytext">
+        Package Price : {{ result['price'] }}
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytext">
+        Grade : {{ result['grade'] }} star
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytext">
+        Max Alt : {{ result['maxAlt'] }} mtrs
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytext">
+          {% if result['optionsRadios'] == 'trek' %}
+        Distance to cover : {{ result['distance'] }} kms
+          {% endif %}
+          {% if not result['optionsRadios'] == 'trek' %}
+            Distance to cover : NA
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytextHeading">
+        Itinerary
+      </div>
+    </div>
+
+      {% for (k,v) in result['itinerary'].items() %}
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytextHeading2">
+        Day{{ loop.index }}
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="mytext" id="aa">
+          {% autoescape false %}
+          {{ v |replace("\n","<br />") }}
+          {% endautoescape %}
+        </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+  </div>
+
+  <div class="container">
+    <table>
+      <th>Inclutions</th>
+      <th>Exclusions</th>
+      <tr>
+        <td style="vertical-align: top;text-align: left;padding-top: 10px;max-width: 50vw;padding-right: 30px;">
+            {% for i in result['inclusions'].split('\n') %}
+            <ul>
+              {{ i }}
+            </ul>
+            {% endfor %}
+        </td>
+        <td style="vertical-align: top;text-align: left;padding-top: 10px;max-width: 50vw;padding-right: 30px;"> 
+            {% for i in result['exclusions'].split('\n') %}
+            <ul>
+              {{ i }}
+            </ul>
+            {% endfor %}
+        </td>
+      </tr>
+      
+      <tr></tr>
+    </table>
+  </div>
+
+
+  <div class="container">
+    <div class="mytextHeading2">
+      Payment Policy 
+    </div>
+    <div class="mytext">
+      {{ result['paymentPolicy'] }}
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="mytextHeading2">
+      Cancelation Policy 
+    </div>
+    <div class="mytext">
+      {{ result['cancelationPolicy'] }}
+    </div>
+  </div>  
+
+  <div class="container" style="width: 20%">
+    <a href="#contactInfo" data-toggle="modal">
+      <button class="button1"><span>Send Query</span></button>
+    </a>  
+  </div>
+  
+
+
+  <div id = "contactInfo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-body" style="background-color: white">
+            <p>Just Enter your name and number and leave the rest to us</p>
+            <form name="submit" method="post" onsubmit="return validateForm()" enctype = "multipart/form-data">
+              <label for="customerName">Name</label>
+              <input name="customerName" type="text" class="form-control" id="customerName" placeholder="Name Please">
+              <label for="phoneNumber">Phone Number</label>
+              <input name="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Phone Number Please">
+              <div style="padding-bottom: 30px"></div>
+              <button data-toggle="modal" type="submit" value=Upload class="btn btn-success active">Submit</button>
+            </form>
+        </div>
+    </div>
+  </div>
+
+<!-- NavBar -->
+<div class="container-fluid" style="height: 160px;background-color: black;opacity: .75;color: #cacaca; ">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6">
+        <div class="row">
+          <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6"><strong><span class="glyphicon-random"></span></strong></div>
+          <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6"><strong>Adventure Uncle</strong></div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6">
+        <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6 ">
+          <p>
+            <strong>Contacts</strong><br>
+            Email: info@adventureuncle.com<br>
+            Phone: +91 9873138031<br>
+          </p>
+        </div>
+        <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6 ">
+          <strong>Links</strong>
+          <ul><li><a href="https://www.facebook.com/pg/Adventure-Uncle-1085256491609904/posts/" target="_blank" style="color: #b8d200;    font-style: oblique;
+    font-weight: bolder;">facebook</a></li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+  <script>
+  $(document).ready(function() {
+		$(document).delegate('.open', 'click', function(event){
+			$(this).addClass('oppenned');
+			event.stopPropagation();
+		})
+		$(document).delegate('body', 'click', function(event) {
+			$('.open').removeClass('oppenned');
+		})
+		$(document).delegate('.cls', 'click', function(event){
+			$('.open').removeClass('oppenned');
+			event.stopPropagation();
+		});
+	});
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+ <!--<script type="text/javascript">
+   $( window ).ready(function() {
+  
+    var wHeight = $(window).height();
+
+    $('.slide')
+      .height(wHeight)
+      .scrollie({
+        scrollOffset : -50,
+        scrollingInView : function(elem) {
+          var bgColor = elem.data('background');
+          
+          $('body').css('background-color', bgColor);
+          
+        }
+      });
+    });
+ </script> -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+
+  function validateForm() {
+    var formsCollection = document.forms["submit"];
+    for(var i=0;i<formsCollection.length;i++){
+            if ( formsCollection[i].value == null || formsCollection[i].value == "" ){
+                if ( formsCollection[i].name != "lngDef" ) {
+                    alert("Field not filled correctly : "+formsCollection[i].name);
+                    return false;
+                }
+            }
+    }
+
+
+    var formsCollection = document.forms["submit"];
+    sendMail(formsCollection);
+}
+
+function sendMail(formsCollection) {
+    var name = formsCollection[0].value;
+    var phone = formsCollection[1].value;
+    var xhr = new XMLHttpRequest();
+    var domain = window.location.hostname;
+    xhr.open("POST", "http://"+domain+"/sendMail?name="+name+"&&phone="+phone, false);
+    xhr.send();
+    var response = xhr.responseText;
+    alert("Holla"+name+"! We will give you a call Soon")
+}
+
+</script>
+
+<!--<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+
+  function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+  }
+</script> -->
+
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/2542/jquery.scrollie.min_1.js'></script>
+<script src='static/genericProductPage/js/index.js'></script>
+</body>
+</html>

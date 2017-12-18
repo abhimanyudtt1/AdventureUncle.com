@@ -1,0 +1,100 @@
+#dropdown-menu-3 .hide-buttons [data-button] {
+  display: none !important;
+}
+#dropdown-menu-3 .nav .link,
+#dropdown-menu-3 .dropdown-item {
+  font-size: 1.2em;
+  color: #f2f2f2;
+}
+#dropdown-menu-3 .navbar,
+#dropdown-menu-3 .dropdown-menu {
+  background: #000000;
+}
+#dropdown-menu-3 .dropdown-menu .dropdown-toggle[aria-expanded="true"],
+#dropdown-menu-3 .dropdown-menu a:hover,
+#dropdown-menu-3 .dropdown-menu a:focus {
+  background: #000000;
+}
+#dropdown-menu-3 .navbar-toggler {
+  color: #f2f2f2;
+}
+#dropdown-menu-q .hide-buttons [data-button] {
+  display: none !important;
+}
+#dropdown-menu-q .nav .link,
+#dropdown-menu-q .dropdown-item {
+  font-size: 1.2em;
+  color: #f2f2f2;
+}
+#dropdown-menu-q .navbar,
+#dropdown-menu-q .dropdown-menu {
+  background: #000000;
+}
+#dropdown-menu-q .dropdown-menu .dropdown-toggle[aria-expanded="true"],
+#dropdown-menu-q .dropdown-menu a:hover,
+#dropdown-menu-q .dropdown-menu a:focus {
+  background: #000000;
+}
+#dropdown-menu-q .navbar-toggler {
+  color: #f2f2f2;
+}
+#dropdown-menu-u .hide-buttons [data-button] {
+  display: none !important;
+}
+#dropdown-menu-u .nav .link,
+#dropdown-menu-u .dropdown-item {
+  font-size: 1.2em;
+  color: #f2f2f2;
+}
+#dropdown-menu-u .navbar,
+#dropdown-menu-u .dropdown-menu {
+  background: #000000;
+}
+#dropdown-menu-u .dropdown-menu .dropdown-toggle[aria-expanded="true"],
+#dropdown-menu-u .dropdown-menu a:hover,
+#dropdown-menu-u .dropdown-menu a:focus {
+  background: #000000;
+}
+#dropdown-menu-u .navbar-toggler {
+  color: #f2f2f2;
+}
+#dropdown-menu-y .hide-buttons [data-button] {
+  display: none !important;
+}
+#dropdown-menu-y .nav .link,
+#dropdown-menu-y .dropdown-item {
+  font-size: 1.2em;
+  color: #f2f2f2;
+}
+#dropdown-menu-y .navbar,
+#dropdown-menu-y .dropdown-menu {
+  background: #000000;
+}
+#dropdown-menu-y .dropdown-menu .dropdown-toggle[aria-expanded="true"],
+#dropdown-menu-y .dropdown-menu a:hover,
+#dropdown-menu-y .dropdown-menu a:focus {
+  background: #000000;
+}
+#dropdown-menu-y .navbar-toggler {
+  color: #f2f2f2;
+}
+#dropdown-menu-13 .hide-buttons [data-button] {
+  display: none !important;
+}
+#dropdown-menu-13 .nav .link,
+#dropdown-menu-13 .dropdown-item {
+  font-size: 1.2em;
+  color: #f2f2f2;
+}
+#dropdown-menu-13 .navbar,
+#dropdown-menu-13 .dropdown-menu {
+  background: #000000;
+}
+#dropdown-menu-13 .dropdown-menu .dropdown-toggle[aria-expanded="true"],
+#dropdown-menu-13 .dropdown-menu a:hover,
+#dropdown-menu-13 .dropdown-menu a:focus {
+  background: #000000;
+}
+#dropdown-menu-13 .navbar-toggler {
+  color: #f2f2f2;
+}

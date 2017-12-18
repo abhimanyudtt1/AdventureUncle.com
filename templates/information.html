@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Adventure Uncle | Admin page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<style type="text/css">
+	.carousel .item {
+  height: 500px;
+}
+
+.navbar-header {
+    max-height: 50px;
+    min-width: 100%;
+}
+
+.jumbotron {
+	background-color: #6f5499;;
+	color: white;
+}
+
+.border {
+    margin-top:10px;
+    border: #cdcdcd medium solid;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+</style>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand " href="#">
+        <span class="glyphicon glyphicon-qrcode"></span>
+      </a>
+      <p class="navbar-text"><h3>Adventure Uncle</h3></p>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+ <div class="jumbotron">
+		<div cl>
+			<h1>All Events Information</h1>
+		</span>
+	</div>
+</div>
+
+<div class="container">
+  <h2>All Information</h2>
+  <p>The Below table shows the details of all the listed packages</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Definition</th>
+        <th>Price(Rs)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      	{% for key, value in message.iteritems() %}
+      		<tr>
+        		<td>{{key}}</td>
+        		<td>{{value[0]}}</td>
+        		<td>{{value[1]}}</td>
+        		<td>
+        			<a id = "{{ key }}" href="#myModal" data-toggle="modal" class="btn btn-primary btn-sm" onclick="getDataByName(this)"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+        			<a id = "{{ key }}" href="#yesNo" data-toggle="modal" class="btn btn-danger btn-sm" onclick="getName(this)"><span class="glyphicon glyphicon-trash"></span> Remove</a>
+        		</td>
+      		</tr>
+      	{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div id = "yesNo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-body" style="background-color: white">
+            <p> Do you really want to delete this data ? </p>
+            <a id="yesNoClick" class="btn btn-success active">
+                    Yes
+            </a>
+            <a href="#yesNo" data-toggle="modal">
+                <button class="btn btn-success active">
+                    No
+                </button>
+            </a>
+        </div>
+    </div>
+    
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-body" style="background-color: white">
+	<form id='registration' name="submit" action="/saveInfo" method="post" onsubmit="return validateForm()" enctype = "multipart/form-data">
+
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="options1" value="trek">Trek
+                </label>
+                <label>
+                    <input type="radio" name="optionsRadios" id="Radios2" value="adventure"> AdventureSport
+                </label>
+                <label>
+                    <input type="radio" name="optionsRadios" id="Radios3" value="event"> Event
+                </label>
+                <label>
+                    <input type="radio" name="optionsRadios" id="Radios4" value="camp"> Camp
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input name="name" type="text" class="form-control" id="name" placeholder="Name of the Event" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ShortDef">Short Introduction</label>
+                <input name="ShortDef" type="text" class="form-control" id="ShortDef" placeholder="Shot Introduction">
+            </div>
+            <div class="form-group">
+                <label for="lngDef">Long Info</label>
+                <textarea name="lngDef" class="form-control" id="lngDef" placeholder="Enter Full info here along with iteanary.. " rows="10"></textarea>
+            </div>
+            <div class="form-group" id="image_count_1">
+            	<label for="input-1" class="control-label">Select File</label>
+				<input name='image_count_1' id="input-1" type="file" class="file">
+			</div>
+			<div class="form-group">
+				<a onclick="return add_fields()"><span class="glyphicon glyphicon-plus"></span></a>
+				<a onclick="return remove_fields()"><span class="glyphicon glyphicon-minus"></span></a>
+				</div>
+			<div class="form-group">
+                <label for="price">Price</label>
+                <input name="price" type="number" class="form-control" id="price" placeholder="Price Per Person">
+            </div>
+            <div class="form-group" id="durationOuter">
+                <label for="duration">Duration</label>
+                <input name="duration" type="number" class="form-control" id="duration" placeholder="Duration in days example : if 3days and 2nights then set value 3 ">
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade</label>
+                <input name="grade" type="number" class="form-control" id="grade" placeholder="Grade of Treck">
+            </div>
+
+            <div class="form-group">
+                <label for="maxAlt">Max altitude(Mtrs)</label>
+                <input name="maxAlt" type="number" class="form-control" id="maxAlt" placeholder="Max altitude">
+            </div>
+
+			<div class="form-group">
+                <label for="distance">Distance on foot</label>
+                <input name="distance" type="number" class="form-control" id="distance" placeholder="Distance on Foot">
+            </div>
+
+            <div class="form-group">
+                <label for="cancelationPolicy">Cancelation Policy</label>
+                <textarea name="cancelationPolicy" class="form-control" id="cancelationPolicy" placeholder="Enter Full Cancelation Policy.. " rows="10"></textarea>
+            </div>
+
+			<div class="form-group">
+                <label for="paymentPolicy">Payment Policy</label>
+                <textarea name="paymentPolicy" class="form-control" id="paymentPolicy" placeholder="Enter Full Payment Policy.. " rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="inclusions">Inclusions</label>
+                <textarea name="inclusions" class="form-control" id="inclusions" placeholder="Enter Full Inclusions.. " rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exclusions">Exclusions Policy</label>
+                <textarea name="exclusions" class="form-control" id="exclusions" placeholder="Enter Full Exclusions Policy.. " rows="10"></textarea>
+            </div>
+
+
+            <button type="submit" value=Upload class="btn btn-success active">Submit</button>
+        </form>
+        </div>
+        </div>
+	</div>
+
+	<div class="container">
+		<br>
+		<br>
+	</div>
+</div>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	var image_count = 1;
+	var duration_first_flag = 0;
+	var itinerary_count = 1;
+	var old_value = 0;
+function add_fields() {
+    image_count++;
+    var objTo = document.querySelector('#registration #image_count_1')
+    var divtest = document.createElement("div");
+    divtest.setAttribute("class", "form-group" );
+    divtest.setAttribute("id","image_count_"+image_count)
+    divtest.innerHTML = '<label class="control-label">Select File</label><input id="input-'+image_count+'" name="image_count_'+image_count+'" type="file" class="file">';
+    objTo.after(divtest)
+}
+function remove_fields() {
+	if (image_count == 1 ){
+		return
+	}
+    var objTo = document.querySelector('#registration #image_count_'+image_count)
+    var divtest = document.createElement("div");
+    divtest.setAttribute("class", "form-group" );
+    divtest.innerHTML = '<label for="input-'+image_count+'" class="control-label">Select File</label><input id="input-'+image_count+'" type="file" class="file">';
+
+    objTo.remove()
+    image_count--;
+}
+
+function validateForm() {
+
+
+    if ( document.forms["submit"]["optionsRadios"].value == null || document.forms["submit"]["optionsRadios"].value == "") {
+        alert("Field not filled correctly : Product Type");
+        return false;
+    }
+    var formsCollection = document.forms["submit"];
+    for(var i=0;i<formsCollection.length;i++){
+            if ( formsCollection[i].value == null || formsCollection[i].value == "" ){
+                if ( formsCollection[i].name != "lngDef" ) {
+                    alert("Field not filled correctly : "+formsCollection[i].name);
+                    return false;
+                }
+            }
+
+    }
+
+}
+
+$('#duration').on('keyup', function(){
+        var value = $(this).val();
+        var objTo = document.querySelector('#registration #durationOuter')
+        /*var itinerary = $('#itinerary').closest('div');*/
+        if (duration_first_flag != 0) {
+        	for (var i = old_value - 1; i >= 0; i--) {
+        		itinerary_count--;
+        		document.querySelector('#registration #itinerary_'+itinerary_count).remove()
+        	}
+        }
+
+        for (var i = value - 1; i >= 0; i--) {
+        	duration_first_flag++;
+        	var divtest = document.createElement("div");
+    		divtest.setAttribute("class", "form-group" );
+    		divtest.setAttribute("id","itinerary_"+itinerary_count)
+    		divtest.innerHTML = '<label for="itinerary">Itinerary for day '+itinerary_count+'</label><textarea name="itinerary_'+itinerary_count+'" class="form-control" id="itinerary_'+itinerary_count+'" placeholder="itinerary for day '+itinerary_count+' " rows="3">';
+    		objTo.after(divtest)
+    		itinerary_count++;
+        }
+        old_value = value;
+    });
+
+
+function durationFunc(ele,count) {
+    var value = count;
+        var objTo = document.querySelector('#registration #durationOuter')
+        /*var itinerary = $('#itinerary').closest('div');*/
+        if (duration_first_flag != 0) {
+        	for (var i = old_value - 1; i >= 0; i--) {
+        		itinerary_count--;
+        		document.querySelector('#registration #itinerary_'+itinerary_count).remove()
+        	}
+        }
+        for (var i = value - 1; i >= 0; i--) {
+        	duration_first_flag++;
+        	var divtest = document.createElement("div");
+    		divtest.setAttribute("class", "form-group" );
+    		divtest.setAttribute("id","itinerary_"+itinerary_count)
+    		divtest.innerHTML = '<label for="itinerary">Itinerary for day '+itinerary_count+'</label><textarea name="itinerary_'+itinerary_count+'" class="form-control" id="itinerary_'+itinerary_count+'" placeholder="itinerary for day '+itinerary_count+' " rows="3">';
+    		objTo.after(divtest)
+    		itinerary_count++;
+        }
+        old_value = value;
+}
+
+function getName(elem) {
+    document.querySelector('#yesNoClick').href = "/deleteData?name="+elem.id;
+}
+
+function getDataByName(elem) {
+    var name = elem.id;
+    var xhr = new XMLHttpRequest();
+    var domain = window.location.hostname;
+    xhr.open("POST", "http://"+domain+"/getEventByName?name="+name, false);
+    xhr.send();
+    var response = xhr.responseText;
+    durationFunc($('#duration'),$.parseJSON(response)['duration'])
+    populate('#myModal', $.parseJSON(response));
+}
+
+function populate(frm, data) {
+  $.each(data, function(key, value){
+    if ( key != 'itinerary' ) {
+    $('[name='+key+']', frm).val(value);
+    }
+    if ( key == 'itinerary' ) {
+        $.each(value, function(ky, val){
+            $('[name='+ky+']', frm).val(val);
+        });
+
+    }
+
+  });
+  radiobtn = document.querySelector('[value="'+data['optionsRadios']+'"]');
+  radiobtn.checked = true;
+
+}
+</script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

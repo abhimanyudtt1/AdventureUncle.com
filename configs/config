@@ -1,0 +1,14 @@
+trekTextInfo = ./info/textInfoAllProducts/Trek
+campTextInfo = ./info/textInfoAllProducts/Camp
+eventTextInfo = ./info/textInfoAllProducts/Event
+adventureTextInfo = ./info/textInfoAllProducts/Adventure
+
+trekImageInfo = ./info/imageInfoAllProducts/Trek
+campImageInfo = ./info/imageInfoAllProducts/Camp
+eventImageInfo = ./info/imageInfoAllProducts/Event
+adventureImageInfo = ./info/imageInfoAllProducts/Adventure
+
+trekData = ./info/trekProduct.yml
+campData = ./info/campProduct.yml
+eventData = ./info/eventProduct.yml
+adventureData = ./info/adventureProduct.yml
