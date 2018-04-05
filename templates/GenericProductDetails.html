@@ -298,21 +298,33 @@ a {
 </div> -->
 
 
-<div class="open"> <span class="cls"></span> <span>
-  <ul class="sub-menu ">
-    <li> <a href="#">Home</a> </li>
-    <li> <a href="#">Contact</a> </li>
-    <li> <a href="#">About</a> </li>
-    <li> <a href="#">Blog</a> </li>
-  </ul>
-  </span> <span class="cls"></span> </div> 
-
-
-
-<div class = "heading" style="background-color: black;color: white;font-family: sans-serif;
-    font-variant: common-ligatures;opacity: .8;"><h1 id="heading"  data-background="#27ae60">Advendure Uncle</h1></div>
+<div class="open">
+    <span class="cls" style="background: white;"></span>
+    <span style="background: white;">
+        <ul class="sub-menu ">
+            <li> <a href="/">Home</a> </li>
+            <li> <a href="#">Contact</a> </li>
+            <li> <a href="#">About</a> </li>
+            <li> <a href="#">Blog</a> </li>
+        </ul>
+    </span>
+    <span class="cls" style="background: white;"></span>
 </div>
-<div class="slider" style="padding: 100px; ">
+
+
+
+<div class = "heading" style="
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    font-variant: common-ligatures;
+    opacity: 1;
+    "><h1 id="heading"  data-background="#27ae60">Advendure Uncle</h1></div>
+</div>
+<div class="slider" style="position: relative;">
     <div class="slider__slides">
   <!-- slides -->
   {% set images = result['image'] %}
@@ -562,15 +574,15 @@ a {
           <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6"><strong>Adventure Uncle</strong></div>
         </div>
       </div>
-      <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6">
-        <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6 ">
+      <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6" >
+        <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6 " style="width:60%">
           <p>
             <strong>Contacts</strong><br>
             Email: info@adventureuncle.com<br>
             Phone: +91 9873138031<br>
           </p>
         </div>
-        <div class="col-lg-6 col-xs-6 col-md-6 col-sm-6 ">
+        <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 ">
           <strong>Links</strong>
           <ul><li><a href="https://www.facebook.com/pg/Adventure-Uncle-1085256491609904/posts/" target="_blank" style="color: #b8d200;    font-style: oblique;
     font-weight: bolder;">facebook</a></li></ul>

@@ -24,6 +24,11 @@ def welcomePage():
 def welcomePage_1():
     return render_template('index_1.html',result=cardInfo())
 
+@app.route('/homeNew')
+@app.route('/homeNew.html')
+def welcomePage_2():
+    return render_template('homeNew.html',result=cardInfo())
+
 
 @app.route('/page6.html')
 def trek():
@@ -265,7 +270,7 @@ def getEventByName():
 @app.route('/leads',methods=['GET'])
 def leads():
     string = runCmd('cat ./info/leads')
-    return render_template_string("<html><body></<pre>%s</pre></body></html>" % str(string))
+    return render_template_string("<html><body><pre>%s</pre></body></html>" % str(string))
 
 
 
@@ -291,5 +296,5 @@ if __name__ == "__main__":
     configFile = sys.argv[1]
     config = configParser(configFile)
     # Running the app now
-    app.run(host = '0.0.0.0',port=80,debug=True)
+    app.run(host = '0.0.0.0',port=5501,debug=True)
     app.logger.addHandler(log)
