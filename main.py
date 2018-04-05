@@ -296,5 +296,5 @@ if __name__ == "__main__":
     configFile = sys.argv[1]
     config = configParser(configFile)
     # Running the app now
-    app.run(host = '0.0.0.0',port=5501,debug=True)
+    app.run(host = '0.0.0.0',port=80,debug=True)
     app.logger.addHandler(log)
