@@ -1,0 +1,4 @@
+.loadedImg {
+	transition-delay: 3s;
+	transform: translateX(100%);
+}

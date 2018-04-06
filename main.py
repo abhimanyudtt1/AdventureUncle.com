@@ -14,15 +14,15 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 config = {}
 
-@app.route('/')
-@app.route('/index.html')
-def welcomePage():
-    return render_template('index.html',result=cardInfo())
-
-@app.route('/')
-@app.route('/index_1.html')
-def welcomePage_1():
-    return render_template('index_1.html',result=cardInfo())
+# @app.route('/')
+# @app.route('/index.html')
+# def welcomePage():
+#     return render_template('index.html',result=cardInfo())
+#
+# @app.route('/')
+# @app.route('/index_1.html')
+# def welcomePage_1():
+#     return render_template('index_1.html',result=cardInfo())
 
 @app.route('/homeNew')
 @app.route('/homeNew.html')
@@ -141,6 +141,10 @@ def introduction():
 def roomDetails():
     return render_template('room-details.html')
 
+
+@app.route('/')
+def loader():
+    return render_template('mainPageWithLoader.html')
 
 @app.route('/admin')
 def adminLogin():
@@ -296,5 +300,5 @@ if __name__ == "__main__":
     configFile = sys.argv[1]
     config = configParser(configFile)
     # Running the app now
-    app.run(host = '0.0.0.0',port=80,debug=True)
+    app.run(host = '0.0.0.0',port=5501,debug=True)
     app.logger.addHandler(log)
